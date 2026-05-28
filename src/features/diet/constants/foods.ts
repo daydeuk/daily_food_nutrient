@@ -23,6 +23,8 @@ export const FOODS_BY_MEAL: Record<MealType, Food[]> = {
     { id: 'sundae_gukbap', name: '순대국밥', nutrition: { calories: 800, sugar: 3, saturatedFat: 9, transFat: 0.5 } },
     { id: 'wagyu_burger', name: '한우불고기버거 세트', nutrition: { calories: 1030, sugar: 49, saturatedFat: 12, transFat: 1.0 } },
     { id: 'soda_can', name: '탄산음료 1캔', nutrition: { calories: 140, sugar: 35, saturatedFat: 0, transFat: 0 } },
+    { id: 'clam_noodle', name: '바지락 칼국수', nutrition: { calories: 680, sugar: 4, saturatedFat: 1.5, transFat: 0 } },
+    { id: 'shin_ramyeon', name: '신라면', nutrition: { calories: 500, sugar: 4, saturatedFat: 8, transFat: 0 } },
   ],
   snack: [
     { id: 'iced_tea', name: '아이스티 레귤러', nutrition: { calories: 90, sugar: 21, saturatedFat: 0, transFat: 0 } },
