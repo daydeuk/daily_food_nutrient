@@ -7,8 +7,9 @@ interface Props {
 }
 
 export function MealSection({ meal }: Props) {
+  const firstSubcategory = meal === 'snack' ? 'side' : 'main';
   const foods = [...FOODS_BY_MEAL[meal]].sort((a, b) =>
-    a.subcategory === b.subcategory ? 0 : a.subcategory === 'main' ? -1 : 1,
+    a.subcategory === b.subcategory ? 0 : a.subcategory === firstSubcategory ? -1 : 1,
   );
 
   return (

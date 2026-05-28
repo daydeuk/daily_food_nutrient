@@ -8,7 +8,7 @@ export function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 className="app-title">오늘의 식단 영양소 계산기</h1>
+        <h1 className="app-title">오늘의 식단 plan</h1>
       </header>
       <main className="app-main">
         {isSubmitted ? <ResultPanel /> : <DietForm />}
