@@ -29,6 +29,13 @@ export const MEAL_LABELS: Record<string, string> = {
   dinner: '저녁',
 };
 
+export const SUBCATEGORY_LABELS: Record<string, Record<string, string>> = {
+  breakfast: { main: '식사', side: '음료·사이드' },
+  lunch:     { main: '식사', side: '음료·사이드' },
+  snack:     { main: '간식', side: '음료' },
+  dinner:    { main: '식사', side: '음료·사이드' },
+};
+
 export const NUTRITION_LABELS: Record<keyof Nutrition, string> = {
   calories: '칼로리',
   sugar: '당류',

@@ -7,9 +7,12 @@ export interface Nutrition {
   transFat: number;
 }
 
+export type FoodSubcategory = 'main' | 'side';
+
 export interface Food {
   id: string;
   name: string;
+  subcategory: FoodSubcategory;
   nutrition: Nutrition;
 }
 
