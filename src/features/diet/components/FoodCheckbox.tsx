@@ -18,7 +18,6 @@ export function FoodCheckbox({ food, meal }: Props) {
         onChange={() => toggleFood(meal, food.id)}
       />
       <span className="food-name">{food.name}</span>
-      <span className="food-calories">{food.nutrition.calories}kcal</span>
     </label>
   );
 }

@@ -1,7 +1,7 @@
 import { useDietStore } from '../stores';
 import { MealSection } from './MealSection';
 
-const MEALS = ['breakfast', 'lunch', 'dinner'] as const;
+const MEALS = ['breakfast', 'lunch', 'snack', 'dinner'] as const;
 
 export function DietForm() {
   const submit = useDietStore((s) => s.submit);

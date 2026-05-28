@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { MealType, MealSelections, DailyNutritionResult, Nutrition } from '../types';
-import { FOOD_LIST } from '../constants';
+import { FOODS_BY_MEAL } from '../constants';
 
 interface DietState {
   selections: MealSelections;
@@ -16,13 +16,15 @@ interface DietActions {
 
 const EMPTY_NUTRITION: Nutrition = { calories: 0, sugar: 0, saturatedFat: 0, transFat: 0 };
 
-const FOOD_MAP = new Map(FOOD_LIST.map((food) => [food.id, food]));
+const FOOD_MAP = new Map(
+  Object.values(FOODS_BY_MEAL)
+    .flat()
+    .map((food) => [food.id, food]),
+);
 
-const initialSelections: MealSelections = {
-  breakfast: new Set(),
-  lunch: new Set(),
-  dinner: new Set(),
-};
+function makeEmptySelections(): MealSelections {
+  return { breakfast: new Set(), lunch: new Set(), snack: new Set(), dinner: new Set() };
+}
 
 function sumNutrition(foodIds: Set<string>): Nutrition {
   return [...foodIds].reduce<Nutrition>(
@@ -41,11 +43,7 @@ function sumNutrition(foodIds: Set<string>): Nutrition {
 }
 
 export const useDietStore = create<DietState & DietActions>((set, get) => ({
-  selections: {
-    breakfast: new Set(),
-    lunch: new Set(),
-    dinner: new Set(),
-  },
+  selections: makeEmptySelections(),
   isSubmitted: false,
 
   toggleFood: (meal, foodId) => {
@@ -61,7 +59,7 @@ export const useDietStore = create<DietState & DietActions>((set, get) => ({
   },
 
   reset: () => {
-    set({ selections: { ...initialSelections, breakfast: new Set(), lunch: new Set(), dinner: new Set() }, isSubmitted: false });
+    set({ selections: makeEmptySelections(), isSubmitted: false });
   },
 
   submit: () => {
@@ -72,13 +70,14 @@ export const useDietStore = create<DietState & DietActions>((set, get) => ({
     const { selections } = get();
     const breakfast = sumNutrition(selections.breakfast);
     const lunch = sumNutrition(selections.lunch);
+    const snack = sumNutrition(selections.snack);
     const dinner = sumNutrition(selections.dinner);
     const total: Nutrition = {
-      calories: breakfast.calories + lunch.calories + dinner.calories,
-      sugar: breakfast.sugar + lunch.sugar + dinner.sugar,
-      saturatedFat: breakfast.saturatedFat + lunch.saturatedFat + dinner.saturatedFat,
-      transFat: breakfast.transFat + lunch.transFat + dinner.transFat,
+      calories: breakfast.calories + lunch.calories + snack.calories + dinner.calories,
+      sugar: breakfast.sugar + lunch.sugar + snack.sugar + dinner.sugar,
+      saturatedFat: breakfast.saturatedFat + lunch.saturatedFat + snack.saturatedFat + dinner.saturatedFat,
+      transFat: breakfast.transFat + lunch.transFat + snack.transFat + dinner.transFat,
     };
-    return { breakfast, lunch, dinner, total };
+    return { breakfast, lunch, snack, dinner, total };
   },
 }));

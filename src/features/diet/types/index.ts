@@ -1,4 +1,4 @@
-export type MealType = 'breakfast' | 'lunch' | 'dinner';
+export type MealType = 'breakfast' | 'lunch' | 'snack' | 'dinner';
 
 export interface Nutrition {
   calories: number;
@@ -22,6 +22,7 @@ export interface MealNutrition extends Nutrition {
 export interface DailyNutritionResult {
   breakfast: Nutrition;
   lunch: Nutrition;
+  snack: Nutrition;
   dinner: Nutrition;
   total: Nutrition;
 }
