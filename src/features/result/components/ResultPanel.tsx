@@ -1,0 +1,32 @@
+import { useDietStore } from '@/features/diet/stores';
+import { MEAL_LABELS } from '@/features/diet/constants';
+import { NutritionRow } from './NutritionRow';
+
+const MEALS = ['breakfast', 'lunch', 'dinner'] as const;
+
+export function ResultPanel() {
+  const { getNutritionResult, reset } = useDietStore();
+  const result = getNutritionResult();
+
+  return (
+    <div className="result-panel">
+      <h2 className="result-title">오늘의 식단 영양소 결과</h2>
+
+      {MEALS.map((meal) => (
+        <section key={meal} className="result-meal-section">
+          <h3 className="result-meal-title">{MEAL_LABELS[meal]}</h3>
+          <NutritionRow nutrition={result[meal]} />
+        </section>
+      ))}
+
+      <section className="result-total-section">
+        <h3 className="result-meal-title result-meal-title--total">하루 총 섭취량</h3>
+        <NutritionRow nutrition={result.total} isTotal />
+      </section>
+
+      <button className="reset-btn" onClick={reset}>
+        다시 입력하기
+      </button>
+    </div>
+  );
+}
