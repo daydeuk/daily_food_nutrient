@@ -3,7 +3,7 @@ import type { Nutrition } from '../types';
 export const CALORIES_DAILY_LIMIT = 2000;
 
 const NUTRIENT_ENERGY_RATIOS = {
-  sugar: { ratio: 0.15, kcalPerGram: 4 },       // 총 에너지의 15% 이내
+  sugar: { ratio: 0.20, kcalPerGram: 4 },       // 총 에너지의 20% 이내
   saturatedFat: { ratio: 0.07, kcalPerGram: 9 }, // 총 에너지의 7% 미만
   transFat: { ratio: 0.01, kcalPerGram: 9 },      // 총 에너지의 1% 미만
 } as const;
