@@ -1,5 +1,5 @@
 import { useDietStore } from '@/features/diet/stores';
-import { MEAL_LABELS, DAILY_NUTRITION_LIMITS } from '@/features/diet/constants';
+import { MEAL_LABELS, DAILY_NUTRITION_LIMITS, HALF_DAILY_NUTRITION_LIMITS } from '@/features/diet/constants';
 import { NutritionRow } from './NutritionRow';
 
 const MEALS = ['breakfast', 'lunch', 'snack', 'dinner'] as const;
@@ -15,7 +15,7 @@ export function ResultPanel() {
       {MEALS.map((meal) => (
         <section key={meal} className="result-meal-section">
           <h3 className="result-meal-title">{MEAL_LABELS[meal]}</h3>
-          <NutritionRow nutrition={result[meal]} />
+          <NutritionRow nutrition={result[meal]} warningLimits={HALF_DAILY_NUTRITION_LIMITS} />
         </section>
       ))}
 

@@ -2,6 +2,7 @@
   --color-primary: #3182f6;
   --color-primary-hover: #1b64da;
   --color-danger: #f04452;
+  --color-warning: #f59e0b;
   --color-warning-bg: #fff5f5;
   --color-text: #191f28;
   --color-text-secondary: #6b7684;
@@ -211,8 +212,19 @@
   color: var(--color-danger);
 }
 
+.nutrition-value--warning {
+  color: var(--color-warning);
+}
+
 .nutrition-warning {
   font-size: 11px;
-  color: var(--color-danger);
   font-weight: 600;
+}
+
+.nutrition-warning--exceeded {
+  color: var(--color-danger);
+}
+
+.nutrition-warning--warning {
+  color: var(--color-warning);
 }

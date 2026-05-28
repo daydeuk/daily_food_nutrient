@@ -15,6 +15,13 @@ export const DAILY_NUTRITION_LIMITS: Nutrition = {
   transFat: (CALORIES_DAILY_LIMIT * NUTRIENT_ENERGY_RATIOS.transFat.ratio) / NUTRIENT_ENERGY_RATIOS.transFat.kcalPerGram,
 };
 
+export const HALF_DAILY_NUTRITION_LIMITS: Nutrition = {
+  calories: DAILY_NUTRITION_LIMITS.calories * 0.5,
+  sugar: DAILY_NUTRITION_LIMITS.sugar * 0.5,
+  saturatedFat: DAILY_NUTRITION_LIMITS.saturatedFat * 0.5,
+  transFat: DAILY_NUTRITION_LIMITS.transFat * 0.5,
+};
+
 export const MEAL_LABELS: Record<string, string> = {
   breakfast: '아침',
   lunch: '점심',
