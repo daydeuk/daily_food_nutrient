@@ -10,7 +10,7 @@ export function ResultPanel() {
 
   return (
     <div className="result-panel">
-      <h2 className="result-title">오늘의 식단 영양소 결과</h2>
+      <h2 className="result-title">오늘의 식단 평가</h2>
 
       {MEALS.map((meal) => (
         <section key={meal} className="result-meal-section">
