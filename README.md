@@ -1,6 +1,6 @@
 # 오늘의 식단 영양소 계산기
 
-아침/점심/저녁 식단을 선택하면 칼로리, 당류, 포화지방, 트랜스지방을 자동으로 계산해주는 웹 앱입니다.
+아침/점심/간식/저녁 식단을 선택하면 칼로리, 당류, 포화지방, 트랜스지방을 자동으로 계산해주는 웹 앱입니다.
 
 **배포 URL:** https://daydeuk.github.io/daily_food_nutrient/
 
@@ -8,20 +8,40 @@
 
 ## 기능
 
-- 아침/점심/저녁 카테고리별 음식 복수 선택
+- 아침/점심/간식/저녁 카테고리별 음식 복수 선택
+- 각 카테고리 내 메인 메뉴 → 음료·사이드 순 정렬
 - 식사별 영양소(칼로리, 당류, 포화지방, 트랜스지방) 합산
 - 하루 총 섭취량 표시
-- 하루 권장 섭취량 초과 항목 빨간색 강조 표시
-- 모바일 최적화 UI
+- **주황색**: 개별 식사에서 1일 권장량의 50% 초과
+- **빨간색**: 하루 총 섭취량이 권장량 초과
+- 모바일 최적화 UI (QR코드로 접근 가능)
 
-### 하루 권장 섭취량 기준
+### 하루 권장 섭취량 기준 (2,000kcal 기준 고정)
 
-| 영양소 | 권장량 |
-|--------|--------|
-| 칼로리 | 2,000 kcal |
-| 당류 | 50 g |
-| 포화지방 | 15 g |
-| 트랜스지방 | 2.2 g |
+| 영양소 | 기준 | 권장량 |
+|--------|------|--------|
+| 칼로리 | 고정 | 2,000 kcal |
+| 당류 | 총 에너지의 20% | 100 g |
+| 포화지방 | 총 에너지의 7% | 15.6 g |
+| 트랜스지방 | 총 에너지의 1% | 2.2 g |
+
+---
+
+## 음식 데이터
+
+| 카테고리 | 메뉴 수 |
+|----------|---------|
+| 아침 | 8개 (식사 7, 사이드 1) |
+| 점심 | 13개 (식사 12, 사이드 1) |
+| 간식 | 14개 (간식 7, 음료·사이드 7) |
+| 저녁 | 7개 (식사 7) |
+
+메뉴 추가/수정: `src/features/diet/constants/foods.ts`의 `FOODS_BY_MEAL`
+
+```ts
+{ id: 'unique_id', name: '음식명', subcategory: 'main', // 또는 'side'
+  nutrition: { calories: 0, sugar: 0, saturatedFat: 0, transFat: 0 } }
+```
 
 ---
 
@@ -46,9 +66,9 @@ src/
 ├── features/
 │   ├── diet/                   # 식단 입력 기능
 │   │   ├── components/         # DietForm, MealSection, FoodCheckbox
-│   │   ├── constants/          # 음식 데이터, 영양소 권장량
-│   │   ├── stores/             # Zustand store (dietStore)
-│   │   └── types/              # 타입 정의
+│   │   ├── constants/          # foods.ts, nutritionLimits.ts
+│   │   ├── stores/             # dietStore.ts (Zustand)
+│   │   └── types/              # MealType, Food, Nutrition 등
 │   └── result/                 # 결과 표시 기능
 │       └── components/         # ResultPanel, NutritionRow
 ├── App.tsx
