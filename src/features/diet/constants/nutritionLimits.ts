@@ -8,14 +8,12 @@ const NUTRIENT_ENERGY_RATIOS = {
   transFat: { ratio: 0.01, kcalPerGram: 9 },      // 총 에너지의 1% 미만
 } as const;
 
-export function computeDynamicLimits(totalCalories: number): Nutrition {
-  return {
-    calories: CALORIES_DAILY_LIMIT,
-    sugar: (totalCalories * NUTRIENT_ENERGY_RATIOS.sugar.ratio) / NUTRIENT_ENERGY_RATIOS.sugar.kcalPerGram,
-    saturatedFat: (totalCalories * NUTRIENT_ENERGY_RATIOS.saturatedFat.ratio) / NUTRIENT_ENERGY_RATIOS.saturatedFat.kcalPerGram,
-    transFat: (totalCalories * NUTRIENT_ENERGY_RATIOS.transFat.ratio) / NUTRIENT_ENERGY_RATIOS.transFat.kcalPerGram,
-  };
-}
+export const DAILY_NUTRITION_LIMITS: Nutrition = {
+  calories: CALORIES_DAILY_LIMIT,
+  sugar: (CALORIES_DAILY_LIMIT * NUTRIENT_ENERGY_RATIOS.sugar.ratio) / NUTRIENT_ENERGY_RATIOS.sugar.kcalPerGram,
+  saturatedFat: (CALORIES_DAILY_LIMIT * NUTRIENT_ENERGY_RATIOS.saturatedFat.ratio) / NUTRIENT_ENERGY_RATIOS.saturatedFat.kcalPerGram,
+  transFat: (CALORIES_DAILY_LIMIT * NUTRIENT_ENERGY_RATIOS.transFat.ratio) / NUTRIENT_ENERGY_RATIOS.transFat.kcalPerGram,
+};
 
 export const MEAL_LABELS: Record<string, string> = {
   breakfast: '아침',
