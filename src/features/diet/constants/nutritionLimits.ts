@@ -32,7 +32,7 @@ export const MEAL_LABELS: Record<string, string> = {
 export const SUBCATEGORY_LABELS: Record<string, Record<string, string>> = {
   breakfast: { main: '식사', side: '음료·사이드' },
   lunch:     { main: '식사', side: '음료·사이드' },
-  snack:     { main: '간식', side: '음료' },
+  snack:     { main: '간식', side: '음료·사이드' },
   dinner:    { main: '식사', side: '음료·사이드' },
 };
 
