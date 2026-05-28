@@ -34,6 +34,7 @@ export const FOODS_BY_MEAL: Record<MealType, Food[]> = {
     { id: 'honey_butter_chips', name: '허니버터칩 1봉지', subcategory: 'main', nutrition: { calories: 360, sugar: 6, saturatedFat: 4.5, transFat: 0 } },
     { id: 'hotteok', name: '호떡', subcategory: 'main', nutrition: { calories: 230, sugar: 17, saturatedFat: 3, transFat: 0.2 } },
     { id: 'cup_fruit', name: '컵과일', subcategory: 'main', nutrition: { calories: 120, sugar: 20, saturatedFat: 0, transFat: 0 } },
+    { id: 'oreo_mcflurry', name: '오레오 맥플러리', subcategory: 'main', nutrition: { calories: 330, sugar: 30, saturatedFat: 6, transFat: 0.3 } },
     { id: 'iced_tea', name: '아이스티 레귤러', subcategory: 'side', nutrition: { calories: 90, sugar: 21, saturatedFat: 0, transFat: 0 } },
     { id: 'vanilla_latte', name: '바닐라라떼 레귤러', subcategory: 'side', nutrition: { calories: 180, sugar: 22, saturatedFat: 5, transFat: 0.3 } },
     { id: 'americano', name: '아메리카노', subcategory: 'side', nutrition: { calories: 10, sugar: 0, saturatedFat: 0, transFat: 0 } },
